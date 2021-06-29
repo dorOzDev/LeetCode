@@ -1,6 +1,5 @@
 package leetcode.junecontest
 
-import datastructures.segmenttree.sumsegmenttree.SumSegmentTreeArrayImpl
 import java.lang.Integer.max
 import java.lang.Integer.min
 

@@ -1,6 +1,5 @@
 package leetcode.junecontest
 
-import javafx.scene.shape.ClosePath
 import kotlin.system.measureTimeMillis
 
 fun main() {

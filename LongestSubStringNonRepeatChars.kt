@@ -4,7 +4,7 @@ import kotlin.math.max
 
 class LongestSubStringNonRepeatChars {
 
-    val map = mutableMapOf<Char, Int>()
+    private val map = mutableMapOf<Char, Int>()
 
     fun lengthOfLongestSubstring(s: String): Int {
 

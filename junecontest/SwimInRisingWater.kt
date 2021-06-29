@@ -1,6 +1,5 @@
 package leetcode.junecontest
 
-import com.sun.org.apache.xpath.internal.operations.Bool
 import java.lang.Integer.min
 import java.util.*
 import kotlin.math.max

@@ -1,8 +1,10 @@
 package leetcode.junecontest
 
+import leetcode.utils.Util
+
 fun main() {
 
-    util.printList(PascalTriangle().generate(5))
+    Util.printList(PascalTriangle().generate(5))
 }
 
 class PascalTriangle {
