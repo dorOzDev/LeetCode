@@ -7,7 +7,7 @@ fun main() {
 }
 class MoveZeroes {
 
-    fun moveZeroes(nums: IntArray): Unit {
+    fun moveZeroes(nums: IntArray) {
 
         var writeNonZeroIndex = 0
 
