@@ -1,9 +1,5 @@
 package leetcode.julycontest.weekone
 
-import java.util.*
-import kotlin.Comparator
-
-
 fun main() {
     val arr = intArrayOf(3,3,3,3,5,5,5,2,2,7)
 
@@ -33,26 +29,4 @@ class ReduceArraySizeToHalf {
 
         return countDeletion
     }
-
-/*    class MyTree {
-
-        private val treeSet = TreeSet<Node>(MyComparator())
-
-        fun add(value: Int) {
-            if(treeSet.contains())
-            val node = treeSet.contains(value)
-        }
-    }
-
-    class MyComparator : Comparator<Node> {
-
-        override fun compare(o1: Node, o2: Node): Int {
-
-            if(o1.count > o2.count) return -1
-
-            return 1
-        }
-    }
-
-    data class Node(val value: Int, val count: Int)*/
 }
