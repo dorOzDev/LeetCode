@@ -9,24 +9,24 @@ fun main(args: Array<String>) {
 
     print(LongestIncreasingSubsequence().lengthOfLIS(arr))
 }
+
 class LongestIncreasingSubsequence {
 
     fun lengthOfLIS(nums: IntArray): Int {
 
-        val tree = TreeMap<Int, Int>()
-        var max = 0
-        for(num in nums) {
-            var lower = tree.lowerEntry(num)
-            var localMax = 1
-            while (lower != null) {
-                localMax = max(lower.value + 1, localMax)
-                lower = tree.lowerEntry(lower.key)
-            }
+        val tree = TreeSet<Int>()
 
-            tree[num] = localMax
-            max = max(max, localMax)
+        for(num in nums) {
+            val higher = tree.higher(num)
+
+            if(higher == null) tree.add(num)
+
+            else if(!tree.contains(num)){
+                tree.remove(higher)
+                tree.add(num);
+            }
         }
 
-        return max
+        return tree.size
     }
 }
