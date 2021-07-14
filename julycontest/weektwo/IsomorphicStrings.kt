@@ -11,7 +11,7 @@ fun main() {
     print(IsomorphicStrings().isIsomorphic(s, t))
 }
 class IsomorphicStrings {
-
+    
     fun isIsomorphic(s: String, t: String): Boolean {
 
         val mapFirsToSec = mutableMapOf<Char, Char>()
