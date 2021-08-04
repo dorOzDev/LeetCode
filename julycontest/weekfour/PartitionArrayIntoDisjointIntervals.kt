@@ -1,4 +1,4 @@
-package leetcode.julycontest.weekthree
+package leetcode.julycontest.weekfour
 
 import kotlin.math.max
 
