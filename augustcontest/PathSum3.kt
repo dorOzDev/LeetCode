@@ -3,24 +3,6 @@ package leetcode.augustcontest
 import leetcode.utils.Util
 import leetcode.augustcontest.PathSum3.TreeNode
 
-fun main() {
-
-    val test = listOf<Int>(0, 1, 2, 3)
-
-    val root = TreeNode(1)
-    val left = TreeNode(2)
-    val right = TreeNode(3)
-    val targetSum = 3
-
-    root.left = left
-    root.right = right
-
-    val list = PathSum3().pathSum(root, targetSum)
-
-    for(innerList in list) {
-        print(innerList)
-    }
-}
 class PathSum3 {
 
     fun pathSum(root: TreeNode?, targetSum: Int): List<List<Int>> {
