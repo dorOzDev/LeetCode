@@ -1,7 +1,4 @@
-package leetcode.augustcontest
-
-import leetcode.utils.Util
-import leetcode.augustcontest.PathSum3.TreeNode
+package leetcode.augustcontest.weekone
 
 class PathSum3 {
 
