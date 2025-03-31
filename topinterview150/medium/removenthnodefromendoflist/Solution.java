@@ -2,24 +2,21 @@ package topinterview150.medium.removenthnodefromendoflist;
 
 import utils.ListNode;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Solution {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        Map<Integer, ListNode> indexedList = new HashMap<>();
+        List<ListNode> indexedList = new ArrayList<>();
         ListNode runner = head;
-        int counter = 0;
 
         while(runner != null) {
-            indexedList.put(counter, runner);
-            counter++;
+            indexedList.add(runner);
             runner = runner.next;
         }
 
-        int indexNodeToRemove = counter - n;
+        int indexNodeToRemove = indexedList.size() - n;
 
         ListNode toRemoveNode = indexedList.get(indexNodeToRemove);
 
