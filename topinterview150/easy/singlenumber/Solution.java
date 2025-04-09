@@ -1,4 +1,4 @@
-package topinterview150.easy.xoroperator;
+package topinterview150.easy.singlenumber;
 
 public class Solution {
 

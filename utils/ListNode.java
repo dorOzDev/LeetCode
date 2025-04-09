@@ -4,15 +4,15 @@ import java.util.List;
 
 public class ListNode {
 
-    int val;
+    public int val;
     public ListNode next;
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
         next = null;
     }
 
-    ListNode() {
+    public ListNode() {
 
     }
 
@@ -25,5 +25,15 @@ public class ListNode {
         }
 
         return dummy.next;
+    }
+
+    public static void printList(ListNode head) {
+        ListNode runner = head;
+
+        while(runner != null) {
+            System.out.printf("%s, ", runner.val);
+            runner = runner.next;
+        }
+        System.out.println();
     }
 }
