@@ -11,4 +11,8 @@ public class GeneralUtils {
         }
         System.out.println("-------------------------------------");
     }
+
+    public static void printArray(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
 }
