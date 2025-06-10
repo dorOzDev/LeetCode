@@ -1,100 +1,54 @@
 package topinterview150.medium.desingaddandsearchwordsdatastructure;
 
-import java.util.*;
-
 public class WordDictionary {
-
-    private static final Character HEAD_NODE_VAL = '!';
-    private TrieNode headNode;
+    private TrieNode root;
 
     public WordDictionary() {
-        headNode = new TrieNode(HEAD_NODE_VAL);
+        root = new TrieNode();
     }
 
     public void addWord(String word) {
-        TrieNode runner = headNode;
-        for(int i = 0; i < word.length(); ++i) {
-            char c = word.charAt(i);
-            runner = runner.addNode(c);
+        TrieNode curr = root;
+        for (int i = 0; i < word.length(); i++) {
+            int index = word.charAt(i) - 'a';
+            if (curr.children[index] == null) {
+                curr.children[index] = new TrieNode();
+            }
+            curr = curr.children[index];
         }
-
-        runner.markEndWord();
+        curr.isEndOfWord = true;
     }
 
     public boolean search(String word) {
-        Queue<TrieNode> trieNode = travelTreeForPrefix(word);
-        for(TrieNode node : trieNode) {
-            if(node.isWord) {
-                return true;
-            }
-        }
-
-        return false;
+        return dfsSearch(word, 0, root);
     }
 
-    private Queue<TrieNode> travelTreeForPrefix(String prefix) {
-        Queue<TrieNode> queue = new LinkedList<>();
-        queue.add(headNode);
-        int charIndex = 0;
-        while(!queue.isEmpty() && charIndex < prefix.length()) {
-            Queue<TrieNode> nextLevelQueue = new LinkedList<>();
-            char currChar = prefix.charAt(charIndex);
-            for(TrieNode currNode : queue) {
-                if(currChar == '.') {
-                    nextLevelQueue.addAll(currNode.getAllNodes().values());
-                } else {
-                    TrieNode nodeAtChar = currNode.getNodeAtChar(currChar);
-                    if(nodeAtChar != null) {
-                        nextLevelQueue.add(nodeAtChar);
-                    }
-                }
-            }
-            queue = nextLevelQueue;
-            charIndex++;
+    private boolean dfsSearch(String word, int index, TrieNode node) {
+        // Base case: reached end of word
+        if (index == word.length()) {
+            return node.isEndOfWord;
         }
 
-        return queue;
+        char c = word.charAt(index);
+
+        if (c == '.') {
+            // Try all possible children - EARLY TERMINATION
+            for (TrieNode child : node.children) {
+                if (child != null && dfsSearch(word, index + 1, child)) {
+                    return true; // Early termination!
+                }
+            }
+            return false;
+        } else {
+            // Regular character
+            int charIndex = c - 'a';
+            TrieNode child = node.children[charIndex];
+            return child != null && dfsSearch(word, index + 1, child);
+        }
     }
 
     private static class TrieNode {
-
-        private boolean isWord = false;
-        private final char c;
-        private final Map<Character, TrieNode> nextNodes;
-
-        public TrieNode(char c) {
-            this.c = c;
-            this.nextNodes = new HashMap<>();
-        }
-
-        public TrieNode getNodeAtChar(char c) {
-            return nextNodes.get(c);
-        }
-
-        public void markEndWord() {
-            isWord = true;
-        }
-
-        public boolean getIsWord () {
-            return isWord;
-        }
-
-        public TrieNode addNode(char c) {
-            return nextNodes.computeIfAbsent(c, TrieNode::new);
-        }
-
-        public Map<Character, TrieNode> getAllNodes() {
-            return nextNodes;
-        }
-    }
-
-    public static void main(String[] args) {
-        WordDictionary trie = new WordDictionary();
-        trie.addWord("apple");
-        System.out.println(trie.search("apple"));
-        System.out.println(trie.search("app"));
-        trie.addWord("app");
-        System.out.println(trie.search("app"));
-        System.out.println(trie.search(".pp.e"));
+        TrieNode[] children = new TrieNode[26]; // Array instead of HashMap
+        boolean isEndOfWord = false;
     }
 }
